@@ -1,7 +1,6 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 const BASE_LINK = "https://lite.docker.stat.auckland.ac.nz";
 const BACKUP_DOMAIN = "https://lite-back.up.railway.app";
