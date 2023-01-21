@@ -57,6 +57,7 @@ const Home: NextPage = () => {
                 href={link}
                 className="text-blue-600 hover:text-blue-500"
                 target="_blank"
+                rel="noreferrer"
               >
                 {link}
               </a>
