@@ -7,11 +7,25 @@ const BASE_LINK = "https://lite.docker.stat.auckland.ac.nz";
 const BACKUP_DOMAIN = "https://lite-back.up.railway.app";
 
 const Home: NextPage = () => {
+  const [msg, setMsg] = useState("");
   const [link, setLink] = useState(BACKUP_DOMAIN);
 
   const updateLink = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    // if value doesn't start with BASE_LINK, don't update
+    setMsg("");
+    if (!value || value === "") {
+      setLink(BACKUP_DOMAIN);
+      return;
+    }
+    if (!value.startsWith(BASE_LINK)) {
+      setLink("");
+      setMsg("Please enter a valid iNZight Lite link.");
+      return;
+    }
+
     // replace BASE_LINK with BACKUP_DOMAIN
-    const newLink = e.target.value.replace(BASE_LINK, BACKUP_DOMAIN);
+    const newLink = value.replace(BASE_LINK, BACKUP_DOMAIN);
     setLink(newLink);
   };
 
@@ -47,6 +61,7 @@ const Home: NextPage = () => {
               >
                 {link}
               </a>
+              <p className="text-red-500">{msg}</p>
             </div>
           </form>
         </div>
